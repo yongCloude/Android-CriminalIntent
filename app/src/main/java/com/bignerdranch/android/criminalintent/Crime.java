@@ -10,10 +10,17 @@ public class Crime {
     private Date date;
     private boolean isSolved;
 
-    public Crime() {
+    private Crime() {
         this.id = UUID.randomUUID();
         this.title = "";
         this.date = new Date();
         this.isSolved = false;
     }
+
+    private static class LazyHolder {
+        public static Crime INSTANCE = new Crime();
+    }
+
+    public static Crime getInstance() { return LazyHolder.INSTANCE; }
+
 }
