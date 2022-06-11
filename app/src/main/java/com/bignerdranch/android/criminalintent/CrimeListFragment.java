@@ -32,6 +32,28 @@ public class CrimeListFragment extends Fragment {
         }
     }
 
+    private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder>{
+
+        @NonNull
+        @Override
+        public CrimeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = getLayoutInflater().inflate(R.layout.list_item_crime, parent, false);
+            return new CrimeHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull CrimeHolder holder, int position) {
+            Crime crime = crimeListViewModel.getCrimes().get(position);
+            holder.titleTextView.setText(crime.getTitle());
+            holder.dateTextView.setText(crime.getDate().toString());
+        }
+
+        @Override
+        public int getItemCount() {
+            return crimeListViewModel.getCrimes().size();
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
