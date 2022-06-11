@@ -23,11 +23,19 @@ public class CrimeListFragment extends Fragment {
     private RecyclerView crimeRecyclerView;
     private CrimeAdapter adapter;
 
+
     private class CrimeHolder extends RecyclerView.ViewHolder{
 
         private TextView titleTextView;
         private TextView dateTextView;
+        private Crime crime;
 
+
+        public void bind(Crime crime){
+            this.crime = crime;
+            titleTextView.setText(this.crime.getTitle());
+            dateTextView.setText(this.crime.getDate().toString());
+        }
         public CrimeHolder(@NonNull View view) {
             super(view);
             titleTextView = itemView.findViewById(R.id.crime_title);
@@ -53,8 +61,7 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull CrimeHolder holder, int position) {
             Crime crime = crimes.get(position);
-            holder.titleTextView.setText(crime.getTitle());
-            holder.dateTextView.setText(crime.getDate().toString());
+            holder.bind(crime);
         }
 
         @Override
