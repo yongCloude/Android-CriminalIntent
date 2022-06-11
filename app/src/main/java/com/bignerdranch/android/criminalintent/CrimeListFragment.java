@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,8 +21,14 @@ public class CrimeListFragment extends Fragment {
     private RecyclerView crimeRecyclerView;
 
     private class CrimeHolder extends RecyclerView.ViewHolder{
+
+        private TextView titleTextView;
+        private TextView dateTextView;
+
         public CrimeHolder(@NonNull View view) {
             super(view);
+            titleTextView = itemView.findViewById(R.id.crime_title);
+            dateTextView = itemView.findViewById(R.id.crime_date);
         }
     }
 
