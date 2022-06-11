@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +41,11 @@ public class CrimeListFragment extends Fragment {
             super(view);
             titleTextView = itemView.findViewById(R.id.crime_title);
             dateTextView = itemView.findViewById(R.id.crime_date);
+
+            itemView.setOnClickListener(v -> {
+                Toast.makeText(getContext(), crime.getTitle() + " pressed!", Toast.LENGTH_SHORT)
+                        .show();
+            });
         }
     }
 
