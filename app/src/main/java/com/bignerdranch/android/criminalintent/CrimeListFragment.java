@@ -19,6 +19,12 @@ public class CrimeListFragment extends Fragment {
     private CrimeListViewModel crimeListViewModel = CrimeListViewModel.getInstance();
     private RecyclerView crimeRecyclerView;
 
+    private class CrimeHolder extends RecyclerView.ViewHolder{
+        public CrimeHolder(@NonNull View view) {
+            super(view);
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
