@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -17,9 +18,10 @@ public class CrimeFragment extends Fragment {
     private Crime crime;
     private EditText titleField = null;
 
+    private Button dateButton = null;
+
     public CrimeFragment() {
         crime = null;
-        titleField = null;
     }
 
     @Override
@@ -35,6 +37,10 @@ public class CrimeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_crime, container, false);
 
         titleField = view.findViewById(R.id.crime_title);
+        dateButton = view.findViewById(R.id.crime_data);
+
+        dateButton.setEnabled(false);
+
 
         return view;
     }
