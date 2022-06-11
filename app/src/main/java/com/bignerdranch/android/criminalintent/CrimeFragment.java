@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -18,7 +19,9 @@ public class CrimeFragment extends Fragment {
     private Crime crime;
     private EditText titleField = null;
 
+    private CheckBox solvedCheckBox = null;
     private Button dateButton = null;
+
 
     public CrimeFragment() {
         crime = null;
@@ -38,8 +41,14 @@ public class CrimeFragment extends Fragment {
 
         titleField = view.findViewById(R.id.crime_title);
         dateButton = view.findViewById(R.id.crime_data);
+        solvedCheckBox = view.findViewById(R.id.crime_solved);
 
         dateButton.setEnabled(false);
+
+        solvedCheckBox.setOnCheckedChangeListener((v, isChecked) -> {
+            crime.setSolved(isChecked);
+        });
+
 
 
         return view;
