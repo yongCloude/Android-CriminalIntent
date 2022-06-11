@@ -10,7 +10,7 @@ public class CrimeListViewModel extends ViewModel {
 
     private CrimeListViewModel() {
         for (int i = 0; i < 100; i++) {
-            Crime crime = Crime.getInstance();
+            Crime crime = new Crime();
             crime.setTitle("Crime #" + i);
             crime.setSolved(i % 2 == 0);
             crimes.add(crime);
