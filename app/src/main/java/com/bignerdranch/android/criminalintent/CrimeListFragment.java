@@ -13,12 +13,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class CrimeListFragment extends Fragment {
 
     public static final String TAG = "CrimeListFragment";
 
     private CrimeListViewModel crimeListViewModel = CrimeListViewModel.getInstance();
     private RecyclerView crimeRecyclerView;
+    private CrimeAdapter adapter;
 
     private class CrimeHolder extends RecyclerView.ViewHolder{
 
@@ -34,6 +37,12 @@ public class CrimeListFragment extends Fragment {
 
     private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder>{
 
+        private List<Crime> crimes;
+
+        public CrimeAdapter(List<Crime> crimes) {
+            this.crimes = crimes;
+        }
+
         @NonNull
         @Override
         public CrimeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,7 +52,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull CrimeHolder holder, int position) {
-            Crime crime = crimeListViewModel.getCrimes().get(position);
+            Crime crime = crimes.get(position);
             holder.titleTextView.setText(crime.getTitle());
             holder.dateTextView.setText(crime.getDate().toString());
         }
@@ -70,10 +79,18 @@ public class CrimeListFragment extends Fragment {
         crimeRecyclerView = view.findViewById(R.id.crime_recycler_view);
         crimeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        updateUI();
         return view;
     }
 
     public static CrimeListFragment newInstance(){
         return new CrimeListFragment();
+    }
+
+    private void updateUI(){
+        List<Crime> crimes = crimeListViewModel.getCrimes();
+        adapter = new CrimeAdapter(crimes);
+        crimeRecyclerView.setAdapter(adapter);
+
     }
 }
