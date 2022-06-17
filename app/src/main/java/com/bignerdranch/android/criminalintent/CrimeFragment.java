@@ -17,20 +17,19 @@ import androidx.fragment.app.Fragment;
 public class CrimeFragment extends Fragment {
 
     private Crime crime;
-    private EditText titleField = null;
+    private EditText titleField;
 
-    private CheckBox solvedCheckBox = null;
-    private Button dateButton = null;
-
+    private CheckBox solvedCheckBox;
+    private Button dateButton;
 
     public CrimeFragment() {
-        crime = null;
+
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        crime = Crime.getInstance();
+        crime = new Crime();
     }
 
     @Nullable

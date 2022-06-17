@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
         if(currentFragment == null){
-            CrimeFragment fragment = new CrimeFragment();
+            CrimeListFragment fragment = CrimeListFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.fragment_container, fragment)
